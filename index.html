@@ -30,6 +30,9 @@
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -51,7 +54,7 @@
                     Ciep 089 Graciliano Ramos
                 </a>
 
-                <!-- Navegação -->
+                <!-- Navegação para Desktop -->
                 <nav class="d-none d-md-block">
                     <ul class="nav">
                         <li class="nav-item"><a class="nav-link text-light" href="#home">Início</a></li>
@@ -62,13 +65,14 @@
                     </ul>
                 </nav>
 
-                <!-- Botão para mobile -->
+                <!-- Botão para Mobile -->
                 <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
-                    <span class="navbar-toggler-icon"></span>
+                    <!-- Ícone do Material Icons -->
+                    <span class="material-icons text-light">menu</span>
                 </button>
             </div>
 
-            <!-- Menu mobile -->
+            <!-- Menu Mobile -->
             <div class="collapse" id="mobileMenu">
                 <ul class="nav flex-column mt-3">
                     <li class="nav-item"><a class="nav-link text-light" href="#home">Início</a></li>
@@ -156,47 +160,50 @@
     <!-- Seção Contato (sem formulário) -->
     <section id="contato" class="bg-light py-5">
         <div class="container">
-            <h2 class="text-center mb-4">Contato e Localização</h2>
-            <div class="row text-center">
+            <h2 class="text-center mb-4">Entre em Contato</h2>
+            <div class="row justify-content-center">
                 <div class="col-12 col-md-6">
-                    <h5>Informações de Contato</h5>
-                    <p><strong>Endereço:</strong> R. Lauro Sodré, 0 - Pantanal, Duque de Caxias - RJ.</p>
-                    <p><strong>Telefone:</strong> (21) 2781-2424</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <h5>Localização</h5>
-                    <!-- Mapa incorporado do Google Maps -->
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14717.67698518405!2d-43.320436!3d-22.7498175!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x99710059ad5fc5%3A0x7cb06d91e0350dab!2sCiep%20Brizol%C3%A3o%20089%20Graciliano%20Ramos!5e0!3m2!1spt-BR!2sbr!4v1729305334308!5m2!1spt-BR!2sbr" 
-                        width="100%" 
-                        height="250" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
+                    <h5>Email</h5>
+                    <p>ciep089.gracilianoramos@professor.rj.gov.br</p>
+                    <h5>Telefone</h5>
+                    <p>(21) 3665-0000</p>
+                    <h5>Redes Sociais</h5>
+                    <a href="https://www.instagram.com/ciep089.gracilianoramos/" class="btn btn-outline-dark">Instagram</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rodapé com Bootstrap -->
-    <footer class="bg-dark text-light py-3">
+    <!-- Rodapé -->
+    <footer class="bg-dark text-light py-3 text-center">
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6 text-center text-md-start">
-                    <p>&copy; 2024 Ciep 089 Graciliano Ramos. Todos os direitos reservados.</p>
-                </div>
-                <div class="col-12 col-md-6 text-center text-md-end">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a href="./politicaprivacidade.html" class="text-light">Política de Privacidade</a></li>
-                        <li class="list-inline-item"><a href="./termos.html" class="text-light">Termos de Uso</a></li>
-                    </ul>
-                </div>
-            </div>
+            <p>&copy; 2024 Ciep 089 Graciliano Ramos. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript para alternar entre menus -->
+    <script>
+        function handleMenuDisplay() {
+            const screenWidth = window.innerWidth;
+            const desktopMenu = document.querySelector('nav.d-none.d-md-block');
+            const mobileToggle = document.querySelector('.navbar-toggler');
+            const mobileMenu = document.querySelector('#mobileMenu');
+
+            if (screenWidth < 768) {
+                desktopMenu.style.display = 'none';
+                mobileToggle.style.display = 'block';
+            } else {
+                desktopMenu.style.display = 'block';
+                mobileToggle.style.display = 'none';
+                mobileMenu.classList.remove('show'); // Esconder o menu mobile colapsado
+            }
+        }
+
+        window.addEventListener('load', handleMenuDisplay);
+        window.addEventListener('resize', handleMenuDisplay);
+    </script>
 </body>
 </html>
