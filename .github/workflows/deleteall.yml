@@ -1,27 +1,27 @@
-name: Delete All Workflows
+name: Delete All Workflow Runs
 
 on:
-  workflow_dispatch: # Permite que o workflow seja executado manualmente
+  workflow_dispatch:  # Permite execução manual do workflow
 
 jobs:
-  delete_workflows:
+  delete_workflow_runs:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
 
-      - name: Delete workflows using GitHub API
+      - name: Delete all workflow runs
         env:
-          GITHUB_TOKEN: ${{ secrets.SUPER_TOKEN }}  # Certifique-se de que o super token está configurado nos secrets do repo
+          GITHUB_TOKEN: ${{ secrets.SUPER_TOKEN }}  # Certifique-se que o super token está configurado nos secrets
         run: |
-          # Obtendo a lista de workflows
-          workflows=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-          https://api.github.com/repos/${{ github.repository }}/actions/workflows | jq -r '.workflows[].id')
+          # Obtendo a lista de execuções de workflows
+          workflow_runs=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+          https://api.github.com/repos/${{ github.repository }}/actions/runs | jq -r '.workflow_runs[].id')
 
-          # Apagando cada workflow
-          for workflow in $workflows; do
+          # Apagando cada execução de workflow
+          for run_id in $workflow_runs; do
             curl -X DELETE -H "Authorization: token $GITHUB_TOKEN" \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/$workflow
-            echo "Deleted workflow $workflow"
+            https://api.github.com/repos/${{ github.repository }}/actions/runs/$run_id
+            echo "Deleted workflow run $run_id"
           done
