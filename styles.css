@@ -1,0 +1,39 @@
+/* Tipografia */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+h1, h2, h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #343a40;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ff6347;
+}
+
+/* Rodapé */
+footer {
+    background-color: #343a40;
+}
+
+.list-inline-item a:hover {
+    color: #ff6347;
+}
+
+/* Seção de Contato */
+#contato p {
+    font-size: 1.1rem;
+}
